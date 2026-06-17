@@ -36,20 +36,20 @@
             (let ((current-line (first lines))
                   (next-line (second lines)))
               (cond
-;;              ((starts-with-p current-line "```")
-;;                 (if in-code-block
-;;                     (progn
-;;                      (push (make-ast-node :type :code
-;;                                           :content (format nil "~{~A~^~%~}" (nreverse code-buffer)))
-;;                            ast)
-;;                      (setf in-code-block nil)
-;;                      (setf code-buffer '()))
-;;                     (setf in-code-block t))
-;;                 (setf lines (rest lines)))
+              ((starts-with-p current-line "```")
+                 (if in-code-block
+                     (progn
+                      (push (make-ast-node :type :code
+                                           :content (format nil "~{~A~^~%~}" (nreverse code-buffer)))
+                            ast)
+                      (setf in-code-block nil)
+                      (setf code-buffer '()))
+                     (setf in-code-block t))
+                 (setf lines (rest lines)))
 
-;;               (in-code-block
-;;                 (push current-line code-buffer)
-;;                 (setf lines (rest lines)))
+               (in-code-block
+                 (push current-line code-buffer)
+                 (setf lines (rest lines)))
 
                ((blank-line-p current-line)
                  (setf lines (rest lines)))

@@ -33,6 +33,9 @@
          parsed-inline-text
          (ast-node-level node))))
 
+   ((eq (ast-node-type node) :code)
+    (format nil "  <pre><code>~A</pre></code>" (ast-node-content node)))
+
    ((eq (ast-node-type node) :ul)
      (format nil "<ul>~%~{~A~^~%~}~%</ul>"
        (mapcar #'render-ast-to-html (ast-node-children node))))
