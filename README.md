@@ -5,13 +5,15 @@ To compile, download the code and run:
 sbcl (or your implementation)
 (asdf:make :websidian)
 ```
+
 You have to get the Deploy library into your local-projects of Quicklisp and install some dependecies before compilation (i think it's patchelf on Linux and some random .dll on Windows. Deploy will tell you what to install).
 
 To use it, open your shell and run:
-
+```
 ./websidian "name-of-note.md" "THE-SAME-NAME-AS-NOTE.html" "style.css" 
+```
 
-Last one is optional, the utility bakes css into html.
+Last one is optional, the utility bakes css into html. I personally recommend [Sakura CSS](https://github.com/oxalorg/sakura).
 
 It's more useful in script, something like:
 
