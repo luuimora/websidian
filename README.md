@@ -9,6 +9,8 @@ Hey. Half vibe-coded, half have written myself. This is a CLI-utility to convert
 - Checkbox lists
 - Various edge cases
 - Something I definitely forgot about
+- Nesting for lists
+- Footnotes
 
 ***
 
