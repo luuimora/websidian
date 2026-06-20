@@ -19,24 +19,29 @@
 (in-package :hostsidian)
 (defun main ()
   (let ((args (uiop:command-line-arguments)))
-    
-    (if (< (length args) 2)
-        (progn
-          (format t "Error: Not enough arguments.~%")
-          (format t "Use: ./websidian <input.md> <output.html> [style.css]~%"))
-        
-        (let ((input-file (first args))
-              (output-file (second args))
-              (css-file (third args)))
-          
-          (format t "Compiling...~%")
-          (format t "  Input: ~A~%" input-file)
-          (format t "  Output: ~A~%" output-file)
-          
-          (when css-file
-            (format t "  Style file: ~A~%" css-file))
-          
-          (convert-file-to-html input-file output-file css-file)
-          
-        (format t "Success!~%")
-        (uiop:quit 0)))))
+    (cond
+      ((equal "-v" (first args))
+       (format t "Hostsidian v.0.2.0 distributed under GPL 3 licence.~%")
+       (uiop:quit 0))
+
+      ((< (length args) 2)
+       (format *error-output* "Error: Not enough arguments.~%")
+       (format *error-output* "Use: ./hostsidian <input.md> <output.html> [style.css]~%")
+       (uiop:quit 1))
+
+      (t
+       (let ((input-file (first args))
+             (output-file (second args))
+             (css-file (third args)))
+
+         (format t "Compiling...~%")
+         (format t "  Input: ~A~%" input-file)
+         (format t "  Output: ~A~%" output-file)
+
+         (when css-file
+           (format t "  Style file: ~A~%" css-file))
+
+         (convert-file-to-html input-file output-file css-file)
+
+         (format t "Success!~%")
+         (uiop:quit 0))))))
